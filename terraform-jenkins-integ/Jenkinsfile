@@ -15,7 +15,7 @@ pipeline{
     stage('S3 - create bucket'){
       steps{
         script{
-         sh  returnStatus: true, script: 'aws s3 mb terraform-tf-1212 --region=us-east-1'
+         sh returnStatus: true, script: 'aws s3 mb terraform-tf-1212 --region=us-east-1'
         }
       }
     }
