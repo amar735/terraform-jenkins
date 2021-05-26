@@ -1,9 +1,17 @@
 pipeline{
   agent any
   environment {
-    PATH = "${PATH}:${getTerraformPath()}"
+    AWS_ACCESS_KEY_ID     = credentials('amar_aws_access_key_id')
+    AWS_SECRET_ACCESS_KEY = credentials('amar_aws_access_key')
+    //PATH = "${PATH}:${getTerraformPath()}"
   }
   stages{
+    stage('AWS Config'){
+            steps{
+              sh 'aws configure set region us-east-1'
+              sh 'aws sts get-caller-identity'
+            }
+        }
     stage('S3 - create bucket'){
       steps{
         script{
