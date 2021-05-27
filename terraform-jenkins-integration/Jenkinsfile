@@ -27,6 +27,11 @@ pipeline{
         sh returnStatus: true, script: 'terraform apply -auto-approve'
       }
     }
+    stage('S3 - create bucket'){
+      steps{
+         sh returnStatus: true, script: 'aws s3 mb terraform-tf-1212 --region=us-east-1'
+      }
+    }
   }
 }
 
