@@ -17,11 +17,14 @@ pipeline{
          //sh returnStatus: true, script: 'aws s3 mb terraform-tf-1212 --region=us-east-1'
       //}
    // }
-    stage('terraform init and apply - dev'){
+    stage('terraform init'){
       steps{
-        sh returnStatus: true, script: 'terraform workspace new dev'
         sh "terraform init"
-        sh "terraform apply"
+      }
+    }
+    stage('terraform apply'){
+      steps{
+        sh returnStatus: true, script: 'terraform apply -auto-approve'
       }
     }
   }
