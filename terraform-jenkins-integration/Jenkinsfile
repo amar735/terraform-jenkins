@@ -12,11 +12,6 @@ pipeline{
               sh 'aws sts get-caller-identity'
             }
         }
-   // stage('S3 - create bucket'){
-      //steps{
-         //sh returnStatus: true, script: 'aws s3 mb terraform-tf-1212 --region=us-east-1'
-      //}
-   // }
     stage('terraform init'){
       steps{
         sh "terraform init"
